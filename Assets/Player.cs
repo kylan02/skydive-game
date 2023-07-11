@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -9,12 +10,19 @@ public class Player : MonoBehaviour
     [HideInInspector] public UnityEvent onBirdEat = new UnityEvent();
     [HideInInspector] public int birdsEaten;
 
-    private void Awake() {
+    private void Awake()
+    {
         i = this;
     }
-    
-    public void BirdHit() {
+
+    public void BirdHit()
+    {
         birdsEaten += 1;
         onBirdEat.Invoke();
+    }
+
+    public void ObstacleHit()
+    {
+        SceneManager.LoadScene(0);
     }
 }
