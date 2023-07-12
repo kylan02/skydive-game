@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 6206119415126405911}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &9058405839662714081
 BoxCollider:
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860b20237cd671c41906be49171578e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 1, y: 0}
+  range: {x: -2, y: 2}
 --- !u!1001 &5884561799851726076
 PrefabInstance:
   m_ObjectHideFlags: 0
