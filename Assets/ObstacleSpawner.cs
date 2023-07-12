@@ -12,13 +12,15 @@ public class ObstacleSpawner : MonoBehaviour
     float birdSpawnCooldown;
 
     [Header("Obstacles")]
-
     [SerializeField] GameObject obstaclePrefab;
-
     [SerializeField] float obstacleSpawnResetTime = 5;
 
     float obstacleSpawnCooldown;
+    Transform player;
 
+    private void Start() {
+        player = Player.i.transform;
+    }
 
     private void Update()
     {
@@ -47,6 +49,8 @@ public class ObstacleSpawner : MonoBehaviour
     void SpawnObject(GameObject prefab)
     {
         var spawnPos = transform.position + Vector3.down * spawnRange;
+        spawnPos.x = player.position.x;
+        spawnPos.z = player.position.z;
         spawnPos += new Vector3(Random.Range(-Maxoffset, Maxoffset), 0, Random.Range(-Maxoffset, Maxoffset));
         Instantiate(prefab, spawnPos, Quaternion.identity, transform);
     }
@@ -54,6 +58,8 @@ public class ObstacleSpawner : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         var size = new Vector3(Maxoffset * 2, 1, Maxoffset * 2);
-        Gizmos.DrawWireCube(transform.position + Vector3.down * spawnRange, size);
+        var pos = Application.isPlaying ? player.position : transform.position;
+        pos.y = transform.position.y - spawnRange;
+        Gizmos.DrawWireCube(pos, size);
     }
 }
