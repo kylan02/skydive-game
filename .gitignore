@@ -20,8 +20,6 @@ Logs/\
 UserSettings/\
 .vsconfig
 Assembly-CSharp.csproj
-Assets/Models.meta
-Assets/Models/
 Logs/
 Temp/
 UserSettings/
